@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "King's Touch Church",
-  description: "Management System for King's Touch Church",
+  title: "Tajiri POS",
+  description: "Manage your stores smoothly!",
 };
 
 export default function RootLayout({

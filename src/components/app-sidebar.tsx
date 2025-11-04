@@ -32,6 +32,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { useAuth } from "@/providers/supabaseAuthProvider";
 
 const data = {
   user: {
@@ -46,22 +47,22 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: "Members",
+      title: "People",
       url: "#",
       icon: IconListDetails,
     },
     {
-      title: "Ministries",
+      title: "Sales",
       url: "#",
       icon: IconChartBar,
     },
     {
-      title: "Care Groups",
+      title: "Purchases",
       url: "#",
       icon: IconFolder,
     },
     {
-      title: "Offerings",
+      title: "POS",
       url: "#",
       icon: IconUsers,
     },
@@ -151,6 +152,7 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user } = useAuth()!;
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -162,7 +164,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href="#">
                 <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <span className="text-base font-semibold">TajiriPOS</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -174,7 +176,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        {user ? <NavUser user={user} /> : null}
       </SidebarFooter>
     </Sidebar>
   )

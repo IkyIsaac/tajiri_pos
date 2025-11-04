@@ -1,8 +1,13 @@
-export default function Home() {
+import { redirect } from 'next/navigation';
 
-  return (
-    <>
-      <div>King's Touch Church</div>
-    </>
-  );
+export default function Home() {
+  redirect('/dashboard');
 }
+// export default function Home() {
+
+//   return (
+//     <>
+//       <div>Tajiri POS</div>
+//     </>
+//   );
+// }
