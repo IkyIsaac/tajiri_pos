@@ -105,6 +105,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
+import { SmartTable } from "./SmartDataTable"
 
 export const schema = z.object({
   id: z.number(),
@@ -612,7 +613,8 @@ export function DataTable({
         value="past-performance"
         className="flex flex-col px-4 lg:px-6"
       >
-        <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div>
+        <SmartTable data={initialData} showFilterBar={true} visibleFilters={["header","type"]} />
+        {/* <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div> */}
       </TabsContent>
       <TabsContent value="key-personnel" className="flex flex-col px-4 lg:px-6">
         <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div>
@@ -638,11 +640,11 @@ const chartData = [
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Sales",
     color: "var(--primary)",
   },
   mobile: {
-    label: "Mobile",
+    label: "Net Profit",
     color: "var(--primary)",
   },
 } satisfies ChartConfig

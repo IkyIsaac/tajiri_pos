@@ -1,15 +1,13 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   IconCamera,
   IconChartBar,
-  IconDashboard,
   IconDatabase,
   IconFileAi,
   IconFileDescription,
   IconFileWord,
-  IconFolder,
   IconHelp,
   IconInnerShadowTop,
   IconListDetails,
@@ -17,12 +15,19 @@ import {
   IconSearch,
   IconSettings,
   IconUsers,
-} from "@tabler/icons-react"
+  IconDashboard,
+  IconPackage,
+  IconShoppingCart,
+  IconFolder,
+  IconCoin,
+  IconCash,
+  IconPointOff,
+} from "@tabler/icons-react";
 
-import { NavDocuments } from "@/components/nav-documents"
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
+import { NavDocuments } from "@/components/nav-documents";
+import { NavMain } from "@/components/nav-main";
+import { NavSecondary } from "@/components/nav-secondary";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -31,7 +36,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 import { useAuth } from "@/providers/supabaseAuthProvider";
 
 const data = {
@@ -49,22 +54,59 @@ const data = {
     {
       title: "People",
       url: "#",
-      icon: IconListDetails,
+      icon: IconUsers,
+      items: [
+        { title: "Customers", url: "#" },
+        { title: "Suppliers", url: "#" },
+        { title: "Staff", url: "#" },
+      ],
+    },
+    {
+      title: "Products",
+      url: "#",
+      icon: IconPackage,
+      items: [
+        { title: "Brands", url: "#" },
+        { title: "Categories", url: "#" },
+        { title: "List", url: "#" },
+        { title: "Adjust", url: "#" },
+      ],
     },
     {
       title: "Sales",
       url: "#",
-      icon: IconChartBar,
+      icon: IconShoppingCart,
+      items: [
+        { title: "Sales List", url: "#" },
+        { title: "Sales Returned", url: "#" },
+        { title: "Payment In", url: "#" },
+        { title: "Quotations", url: "#" },
+        { title: "Stock Transfers", url: "#" },
+      ],
     },
     {
       title: "Purchases",
       url: "#",
       icon: IconFolder,
+      items: [
+        { title: "Purchases List", url: "#" },
+        { title: "Purchase Returns", url: "#" },
+        { title: "Payments Out", url: "#" },
+      ],
+    },
+    {
+      title: "Expenses",
+      url: "#",
+      icon: IconCoin,
+      items: [
+        { title: "Category", url: "#" },
+        { title: "Expense List", url: "#" },
+      ],
     },
     {
       title: "POS",
       url: "#",
-      icon: IconUsers,
+      icon: IconPointOff,
     },
   ],
   navClouds: [
@@ -149,7 +191,7 @@ const data = {
       icon: IconFileWord,
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user } = useAuth()!;
@@ -175,9 +217,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
-      <SidebarFooter>
-        {user ? <NavUser user={user} /> : null}
-      </SidebarFooter>
+      <SidebarFooter>{user ? <NavUser user={user} /> : null}</SidebarFooter>
     </Sidebar>
-  )
+  );
 }
