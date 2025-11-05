@@ -1,7 +1,7 @@
 // app/providers.tsx
 "use client";
 
-import { ProtectedRoute } from "@/components/auth/protectedRoute";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { SupabaseAuthProvider } from "@/providers/supabaseAuthProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
